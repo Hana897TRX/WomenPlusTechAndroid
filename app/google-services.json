@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "281817723663",
+    "project_id": "womenplustechnology-4b099",
+    "storage_bucket": "womenplustechnology-4b099.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281817723663:android:a83f6598f57fb59442847a",
+        "android_client_info": {
+          "package_name": "com.hana897trx.womenplustech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281817723663-arv7qroivfq0h7p8ec90mhp628r4s34v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hana897trx.womenplustech",
+            "certificate_hash": "aac2c925bcc9f8f8f69d7a99c1a8a63d0c06f63a"
+          }
+        },
+        {
+          "client_id": "281817723663-ouurvlt0tkm45fc4oh64hm1cahsoq9sm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEjKAtr2a3G-ygTrhzGi-UwidEjwhdUzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281817723663-ouurvlt0tkm45fc4oh64hm1cahsoq9sm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
