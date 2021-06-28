@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
+    //id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
 }
 
@@ -54,4 +54,7 @@ dependencies {
 
     // Fresco
     implementation 'com.facebook.fresco:fresco:1.13.0'
+
+    // Customtabs
+    implementation "androidx.browser:browser:1.3.0"
 }

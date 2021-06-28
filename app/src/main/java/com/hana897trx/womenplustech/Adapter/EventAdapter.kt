@@ -1,17 +1,17 @@
 package com.hana897trx.womenplustech.Adapter
 
 import android.content.Context
-import android.graphics.BitmapFactory
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.Models.Event
 import com.hana897trx.womenplustech.R
-import java.net.URL
+import com.hana897trx.womenplustech.eventInfo
 
 
 class EventAdapter(private val context: Context,
@@ -20,34 +20,55 @@ class EventAdapter(private val context: Context,
 
       class EventViewHolder(inflater: LayoutInflater,
                             parent: ViewGroup,
-                            layout: Int) : RecyclerView.ViewHolder(inflater.inflate(layout, parent, false)) {
+                            layout: Int,
+                            context: Context) : RecyclerView.ViewHolder(inflater.inflate(layout, parent, false)) {
           var imgCover: SimpleDraweeView? = null
           var txtTitle: TextView? = null
           var txtCampus: TextView? = null
           var txtSchedule: TextView? = null
+          var txtEventType : TextView? = null
+          var cardEvent : CardView? = null
+          var context : Context
 
           init {
               imgCover  = itemView.findViewById(R.id.imgCourse)
               txtTitle = itemView.findViewById(R.id.txtCourseTitle)
               txtCampus = itemView.findViewById(R.id.txtCampus)
               txtSchedule = itemView.findViewById(R.id.txtSchedule)
+              cardEvent = itemView.findViewById(R.id.cardEvent)
+              txtEventType = itemView.findViewById(R.id.txtEventType)
+              this.context = context
           }
 
           fun bindData(event: Event){
               val url = Uri.parse(event.eventImage)
               imgCover!!.setImageURI(url)
-
-
-
               txtTitle!!.text = event.title
               txtCampus!!.text = event.campus
               txtSchedule!!.text = event.days
+              txtEventType!!.text = event.eventType
+
+              cardEvent!!.setOnClickListener {
+                  val i = Intent(context, eventInfo::class.java).apply {
+                      putExtra("title", event.title)
+                      putExtra("campus", event.campus)
+                      putExtra("description", event.description)
+                      putExtra("days", event.days)
+                      putExtra("schedule", event.schedule)
+                      putExtra("requirements", event.requirements)
+                      putExtra("registerLink", event.registerLink)
+                      putExtra("temary", event.temary)
+                      putExtra("eventType", event.eventType)
+                      putExtra("eventImage", event.eventImage)
+                  }
+                  context.startActivity(i)
+              }
           }
       }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return EventViewHolder(inflater, parent, layout)
+        return EventViewHolder(inflater, parent, layout, parent.context)
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {

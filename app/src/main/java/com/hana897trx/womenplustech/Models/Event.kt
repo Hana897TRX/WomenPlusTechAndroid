@@ -7,6 +7,8 @@ data class Event(
     var campus : String,
     var days : String,
     var requirements : String,
-    var registerLinke : String,
-    var eventImage : String
+    var registerLink : String,
+    var eventImage : String,
+    var temary : String,
+    var eventType : String
     ) {}
