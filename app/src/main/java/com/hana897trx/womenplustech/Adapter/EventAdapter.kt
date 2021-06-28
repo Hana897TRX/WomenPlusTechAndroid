@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.Models.Event
 import com.hana897trx.womenplustech.R
-import com.hana897trx.womenplustech.eventInfo
+import com.hana897trx.womenplustech.EventInfo
 
 
 class EventAdapter(private val context: Context,
@@ -49,7 +49,8 @@ class EventAdapter(private val context: Context,
               txtEventType!!.text = event.eventType
 
               cardEvent!!.setOnClickListener {
-                  val i = Intent(context, eventInfo::class.java).apply {
+                  val i = Intent(context, EventInfo::class.java).apply {
+                      putExtra("id", event.id)
                       putExtra("title", event.title)
                       putExtra("campus", event.campus)
                       putExtra("description", event.description)
@@ -60,6 +61,7 @@ class EventAdapter(private val context: Context,
                       putExtra("temary", event.temary)
                       putExtra("eventType", event.eventType)
                       putExtra("eventImage", event.eventImage)
+                      putExtra("fechaInicio", event.fechaInicio.toString())
                   }
                   context.startActivity(i)
               }

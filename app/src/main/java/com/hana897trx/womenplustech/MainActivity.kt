@@ -13,6 +13,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.Adapter.EventAdapter
 import com.hana897trx.womenplustech.Models.Event
+import java.sql.Date
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +48,8 @@ class MainActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    var event : Event = Event(
+                    val event : Event = Event(
+                        document.id,
                         document.get("title").toString(),
                         document.get("description").toString(),
                         document.get("schedule").toString(),
@@ -57,13 +59,16 @@ class MainActivity : AppCompatActivity() {
                         document.get("registerLink").toString(),
                         generateUrl(document.get("eventImage").toString())!!,
                         document.get("temary").toString(),
-                        document.get("eventType").toString()
+                        document.get("eventType").toString(),
+                        Date.valueOf(document.get("fechaInicio").toString())
                     )
                     events.add(event)
+
                     if(event.campus == "PUE")
                         pueEvents.add(event)
                     // Log.d(TAG, "${document.id} => ${document.data}")
                 }
+
                 // All Events
                 val rvEvents = findViewById<RecyclerView>(R.id.rvEvents)
                 val adapterAll = EventAdapter(this, R.layout.event_layout, events)

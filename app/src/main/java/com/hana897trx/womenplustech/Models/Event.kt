@@ -1,6 +1,11 @@
 package com.hana897trx.womenplustech.Models
 
+import androidx.room.Entity
+import java.sql.Date
+
+@Entity
 data class Event(
+    var id : String,
     var title : String,
     var description : String,
     var schedule : String,
@@ -10,5 +15,6 @@ data class Event(
     var registerLink : String,
     var eventImage : String,
     var temary : String,
-    var eventType : String
+    var eventType : String,
+    var fechaInicio : Date
     ) {}

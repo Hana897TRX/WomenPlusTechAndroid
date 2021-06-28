@@ -1,8 +1,5 @@
 package com.hana897trx.womenplustech
 
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -12,14 +9,22 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.lifecycleScope
 import com.facebook.drawee.view.SimpleDraweeView
+import com.hana897trx.womenplustech.Dao.EventDao
+import com.hana897trx.womenplustech.Models.Event
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.sql.Date
 
 
-class eventInfo : AppCompatActivity() {
+class EventInfo : AppCompatActivity() {
     private var cardBtnBack : CardView? = null
     private var cardInformation : CardView? = null
     private var imgEvent : SimpleDraweeView? = null
     private var webContent : WebView? = null
+
+    private var event : Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,23 +66,44 @@ class eventInfo : AppCompatActivity() {
             val url = intent.getStringExtra("registerLink")!!
             val builder = CustomTabsIntent.Builder()
             val customTabIntent = builder.build()
-            customTabIntent.launchUrl(this@eventInfo, Uri.parse(url))
+            customTabIntent.launchUrl(this@EventInfo, Uri.parse(url))
+
+            val db = AppDB.getInstance(this@EventInfo)
+
+            lifecycleScope.launch(Dispatchers.IO){
+                db.eventDao().registerEvent(event!!)
+            }
         }
     }
 
     private fun setInfoToView(){
-        imgEvent!!.setImageURI(Uri.parse(intent.getStringExtra("eventImage")))
+        event = Event(
+            intent.getStringExtra("id")!!,
+            intent.getStringExtra("title")!!,
+            intent.getStringExtra("description")!!,
+            intent.getStringExtra("schedule")!!,
+            intent.getStringExtra("campus")!!,
+            intent.getStringExtra("days")!!,
+            intent.getStringExtra("requirements")!!,
+            intent.getStringExtra("registerLink")!!,
+            intent.getStringExtra("eventImage")!!,
+            intent.getStringExtra("temary")!!,
+            intent.getStringExtra("eventType")!!,
+            Date.valueOf(intent.getStringExtra("fechaInicio"))
+        )
+
+        imgEvent!!.setImageURI(Uri.parse(event!!.eventImage))
         val txtTitle = findViewById<TextView>(R.id.txtEventTitle)
-        txtTitle.text = intent.getStringExtra("title")
-        val txtEventType = findViewById<TextView>(R.id.txtCampus)
-        txtEventType.text = intent.getStringExtra("eventType")
+        txtTitle.text = event!!.title
+        val txtEventType = findViewById<TextView>(R.id.txtEventType)
+        txtEventType.text = event!!.eventType
         val txtCampus = findViewById<TextView>(R.id.txtCampus)
-        txtCampus.text = intent.getStringExtra("campus")
+        txtCampus.text = event!!.campus
         val txtFechaInicio = findViewById<TextView>(R.id.txtFechaInicio)
-        txtFechaInicio.text = "Junio 4, 2021"
+        txtFechaInicio.text = event!!.fechaInicio.toString()
         val txtDescription = findViewById<TextView>(R.id.txtDescription)
-        txtDescription.text = intent.getStringExtra("description")
+        txtDescription.text = event!!.description
         val txtTemary = findViewById<TextView>(R.id.txtTemary)
-        txtTemary.text = intent.getStringExtra("temary")
+        txtTemary.text = event!!.temary
     }
 }
