@@ -11,8 +11,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import com.facebook.drawee.view.SimpleDraweeView
-import com.hana897trx.womenplustech.Dao.EventDao
 import com.hana897trx.womenplustech.Models.Event
+import com.hana897trx.womenplustech.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.sql.Date
@@ -97,7 +97,7 @@ class EventInfo : AppCompatActivity() {
         txtTitle.text = event!!.title
         val txtEventType = findViewById<TextView>(R.id.txtEventType)
         txtEventType.text = event!!.eventType
-        val txtCampus = findViewById<TextView>(R.id.txtCampus)
+        val txtCampus = findViewById<TextView>(R.id.txtEventType)
         txtCampus.text = event!!.campus
         val txtFechaInicio = findViewById<TextView>(R.id.txtFechaInicio)
         txtFechaInicio.text = event!!.fechaInicio.toString()

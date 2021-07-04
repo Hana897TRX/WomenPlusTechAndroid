@@ -1,10 +1,12 @@
 package com.hana897trx.womenplustech.Models
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.sql.Date
 
 @Entity
 data class Event(
+        @PrimaryKey
     var id : String,
     var title : String,
     var description : String,
