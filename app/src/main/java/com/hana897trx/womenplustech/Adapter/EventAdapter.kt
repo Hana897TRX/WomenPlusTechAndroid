@@ -33,7 +33,7 @@ class EventAdapter(private val context: Context,
           init {
               imgCover  = itemView.findViewById(R.id.imgCourse)
               txtTitle = itemView.findViewById(R.id.txtCourseTitle)
-              txtCampus = itemView.findViewById(R.id.txtEventType)
+              txtCampus = itemView.findViewById(R.id.txtCampus)
               txtSchedule = itemView.findViewById(R.id.txtSchedule)
               cardEvent = itemView.findViewById(R.id.cardEvent)
               txtEventType = itemView.findViewById(R.id.txtEventType)

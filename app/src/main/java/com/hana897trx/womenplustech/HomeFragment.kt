@@ -76,7 +76,6 @@ class HomeFragment : Fragment() {
 
                     if(event.campus == "PUE")
                         pueEvents.add(event)
-                    // Log.d(TAG, "${document.id} => ${document.data}")
                 }
 
                 // All Events

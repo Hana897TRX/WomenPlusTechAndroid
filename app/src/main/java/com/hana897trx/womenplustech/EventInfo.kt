@@ -6,6 +6,7 @@ import android.view.View
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
@@ -15,6 +16,7 @@ import com.hana897trx.womenplustech.Models.Event
 import com.hana897trx.womenplustech.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.sql.Date
 
 
@@ -57,12 +59,6 @@ class EventInfo : AppCompatActivity() {
         val btnInscri = findViewById<Button>(R.id.btnInscribirse)
 
         btnInscri.setOnClickListener {
-            //cardInformation!!.visibility = View.GONE
-            //imgEvent!!.visibility = View.GONE
-
-            //webContent!!.loadUrl(intent.getStringExtra("registerLink")!!)
-            //webContent!!.visibility = View.VISIBLE
-
             val url = intent.getStringExtra("registerLink")!!
             val builder = CustomTabsIntent.Builder()
             val customTabIntent = builder.build()
@@ -72,6 +68,10 @@ class EventInfo : AppCompatActivity() {
 
             lifecycleScope.launch(Dispatchers.IO){
                 db.eventDao().registerEvent(event!!)
+
+                withContext(Dispatchers.Main){
+                    Toast.makeText(this@EventInfo, "Te has registrado a este evento correctamente", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

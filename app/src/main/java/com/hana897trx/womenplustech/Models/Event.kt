@@ -19,4 +19,4 @@ data class Event(
     var temary : String,
     var eventType : String,
     var fechaInicio : Date
-    ) {}
+    )
