@@ -1,6 +1,7 @@
 package com.hana897trx.womenplustech.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.Models.Event
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.Utility.AppDB
+import com.hana897trx.womenplustech.myCoursesMessages
 
 class MyCoursesAdapter( private val context: Context,
                         private val layout: Int,
@@ -28,6 +30,7 @@ class MyCoursesAdapter( private val context: Context,
         var txtCourseDescription: TextView? = null
         var txtNotification: TextView? = null
         var cardCourseNotification: CardView? = null
+        var cardCourseMessage: CardView? = null
         var context : Context? = null
 
         init {
@@ -36,6 +39,7 @@ class MyCoursesAdapter( private val context: Context,
             txtCourseDescription = itemView.findViewById(R.id.txtCourseDescription)
             txtNotification = itemView.findViewById(R.id.txtNotification)
             cardCourseNotification = itemView.findViewById(R.id.cardCourseNotification)
+            cardCourseMessage = itemView.findViewById(R.id.cardCourseMessage)
             this.context = context
         }
 
@@ -44,6 +48,13 @@ class MyCoursesAdapter( private val context: Context,
             imgCourse!!.setImageURI(url)
             txtCourseTitle!!.text = event.title
             txtCourseDescription!!.text = event.description
+
+            cardCourseMessage!!.setOnClickListener {
+                val i = Intent(context, myCoursesMessages::class.java)
+                i.putExtra("_id", event.id)
+
+                context!!.startActivity(i)
+            }
         }
     }
 

@@ -11,8 +11,8 @@ interface MessageDao {
     @Insert
     fun InsertMessage(message : Messages)
 
-    @Query("SELECT * FROM Messages WHERE event_id = :event_id")
-    fun getMessage(event_id : String) : List<Messages>
+    @Query("SELECT * FROM Messages WHERE idEvent = :idEvent")
+    fun getMessage(idEvent : String) : List<Messages>
 
     @Delete
     fun deleteMessage(message: Messages)

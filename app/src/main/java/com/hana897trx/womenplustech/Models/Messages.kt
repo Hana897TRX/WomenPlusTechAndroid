@@ -8,7 +8,7 @@ import java.sql.Date
 class Messages (
     @PrimaryKey
     var _id : String,
-    var event_id : String,
+    var idEvent : String,
     var message : String,
     var fecha_envio : Date,
 )
