@@ -6,16 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".myAccount" >
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wallpaper"
-        tools:src="@drawable/wallpaper" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/wallpaper"
+            tools:src="@drawable/wallpaper" />
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -34,8 +41,8 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="200dp"
@@ -47,6 +54,7 @@
                     android:id="@+id/imageView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="4dp"
                     android:src="@drawable/ic_camera" />
             </androidx.cardview.widget.CardView>
@@ -105,7 +113,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
+        android:editable="false"
         android:ems="10"
+        android:focusableInTouchMode="false"
         android:hint="Birthdate"
         android:inputType="textPersonName"
         android:textColor="#8C8C8C"
@@ -122,14 +132,48 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
-        android:text="Email"
         android:textColor="#8C8C8C"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtBirthdate" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="Password (Optional)"
+        android:inputType="textPersonName"
+        android:textColor="#8C8C8C"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMail" />
+
+    <EditText
+        android:id="@+id/txtConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="Confirm password (Optional)"
+        android:inputType="textPersonName"
+        android:textColor="#8C8C8C"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <Button
         android:id="@+id/btnUpdate"
@@ -140,7 +184,8 @@
         android:layout_marginEnd="32dp"
         android:text="Actualizar información"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtConfirmPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

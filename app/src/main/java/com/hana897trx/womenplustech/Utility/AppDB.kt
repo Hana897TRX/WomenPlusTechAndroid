@@ -7,14 +7,17 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.hana897trx.womenplustech.Dao.EventDao
 import com.hana897trx.womenplustech.Dao.MessageDao
+import com.hana897trx.womenplustech.Dao.UserDao
 import com.hana897trx.womenplustech.Models.Event
 import com.hana897trx.womenplustech.Models.Messages
+import com.hana897trx.womenplustech.Models.User
 
-@Database(entities = [Event::class, Messages::class], version = 1)
+@Database(entities = [Event::class, Messages::class, User::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDB : RoomDatabase(){
     abstract fun eventDao(): EventDao
     abstract fun messageDao() : MessageDao
+    abstract fun userDao() : UserDao
     companion object{
         private var INSTANCE: AppDB? = null
 

@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -16,6 +18,10 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.Adapter.EventAdapter
 import com.hana897trx.womenplustech.Models.Event
+import com.hana897trx.womenplustech.Utility.AppDB
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.sql.Date
 
 class HomeFragment : Fragment() {
@@ -30,6 +36,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        loadUser(view)
         spCampus(view)
         loadEvents(view)
 
@@ -46,6 +53,23 @@ class HomeFragment : Fragment() {
             campus
         )
         spCampusWidget.adapter = adapter
+    }
+
+    private fun loadUser(view : View) {
+        val txtUsername = view.findViewById<TextView>(R.id.txtUsername)
+
+        val db = AppDB.getInstance(requireContext())
+        lifecycleScope.launch(Dispatchers.IO) {
+            val user = db.userDao().getUser()
+
+            withContext(Dispatchers.Main) {
+                if(user.size > 0){
+                    txtUsername.text = user[0].userName
+                }
+                else
+                    txtUsername.text = "Invitado"
+            }
+        }
     }
 
     private fun loadEvents(view : View) {
