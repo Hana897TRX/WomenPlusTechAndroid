@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech
+package com.hana897trx.womenplustech.view
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -18,8 +18,9 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.lifecycleScope
-import com.hana897trx.womenplustech.Models.User
-import com.hana897trx.womenplustech.Utility.AppDB
+import com.hana897trx.womenplustech.model.Models.User
+import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

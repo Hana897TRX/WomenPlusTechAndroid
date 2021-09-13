@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.Models
+package com.hana897trx.womenplustech.model.Models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,16 +1,16 @@
-package com.hana897trx.womenplustech.Utility
+package com.hana897trx.womenplustech.model.Utility
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.hana897trx.womenplustech.Dao.EventDao
-import com.hana897trx.womenplustech.Dao.MessageDao
-import com.hana897trx.womenplustech.Dao.UserDao
-import com.hana897trx.womenplustech.Models.Event
-import com.hana897trx.womenplustech.Models.Messages
-import com.hana897trx.womenplustech.Models.User
+import com.hana897trx.womenplustech.model.Dao.EventDao
+import com.hana897trx.womenplustech.model.Dao.MessageDao
+import com.hana897trx.womenplustech.model.Dao.UserDao
+import com.hana897trx.womenplustech.model.Models.Event
+import com.hana897trx.womenplustech.model.Models.Messages
+import com.hana897trx.womenplustech.model.Models.User
 
 @Database(entities = [Event::class, Messages::class, User::class], version = 1)
 @TypeConverters(Converters::class)

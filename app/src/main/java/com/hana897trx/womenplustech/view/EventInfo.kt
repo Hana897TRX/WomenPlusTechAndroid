@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech
+package com.hana897trx.womenplustech.view
 
 import android.net.Uri
 import android.os.Bundle
@@ -12,8 +12,9 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import com.facebook.drawee.view.SimpleDraweeView
-import com.hana897trx.womenplustech.Models.Event
-import com.hana897trx.womenplustech.Utility.AppDB
+import com.hana897trx.womenplustech.model.Models.Event
+import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

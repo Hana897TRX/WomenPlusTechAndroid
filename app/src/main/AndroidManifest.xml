@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomenTech">
-        <activity android:name=".myCoursesMessages"></activity>
-        <activity android:name=".EventInfo" />
-        <activity android:name=".EventInfo" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.myCoursesMessages"></activity>
+        <activity android:name=".view.EventInfo" />
+        <activity android:name=".view.EventInfo" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

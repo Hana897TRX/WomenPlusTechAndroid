@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.Adapter
+package com.hana897trx.womenplustech.model.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
-import com.hana897trx.womenplustech.Models.Event
+import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
-import com.hana897trx.womenplustech.EventInfo
+import com.hana897trx.womenplustech.view.EventInfo
 
 
 class EventAdapter(private val context: Context,

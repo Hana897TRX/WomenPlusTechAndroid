@@ -1,9 +1,8 @@
-package com.hana897trx.womenplustech.Models
+package com.hana897trx.womenplustech.model.Models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Blob
 import java.sql.Date
 
 @Entity

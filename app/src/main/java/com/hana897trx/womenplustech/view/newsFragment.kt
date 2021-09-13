@@ -1,10 +1,11 @@
-package com.hana897trx.womenplustech
+package com.hana897trx.womenplustech.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hana897trx.womenplustech.R
 
 class newsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {

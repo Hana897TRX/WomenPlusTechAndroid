@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech
+package com.hana897trx.womenplustech.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hana897trx.womenplustech.Adapter.MyCoursesAdapter
-import com.hana897trx.womenplustech.Utility.AppDB
+import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.Adapter.MyCoursesAdapter
+import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -36,7 +37,8 @@ class MyCourses : Fragment() {
             val events = db.eventDao().getRegisterEvents()
 
             withContext(Dispatchers.Main) {
-                val adapter = MyCoursesAdapter(view.context, R.layout.event_my_courses_layout, events)
+                val adapter = MyCoursesAdapter(view.context,
+                    R.layout.event_my_courses_layout, events)
                 rvCourses.adapter = adapter
             }
         }

@@ -1,7 +1,7 @@
-package com.hana897trx.womenplustech.Dao
+package com.hana897trx.womenplustech.model.Dao
 
 import androidx.room.*
-import com.hana897trx.womenplustech.Models.User
+import com.hana897trx.womenplustech.model.Models.User
 
 @Dao
 interface UserDao {

@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.Utility
+package com.hana897trx.womenplustech.model.Utility
 
 import androidx.room.TypeConverter
 import java.sql.Date

@@ -6,7 +6,7 @@
     app:startDestination="@id/home">
     <fragment
         android:id="@+id/home"
-        android:name="com.hana897trx.womenplustech.HomeFragment"
+        android:name="com.hana897trx.womenplustech.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/myCourses"
-        android:name="com.hana897trx.womenplustech.MyCourses"
+        android:name="com.hana897trx.womenplustech.view.MyCourses"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.hana897trx.womenplustech.newsFragment"
+        android:name="com.hana897trx.womenplustech.view.newsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" >
         <action
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/myAccount"
-        android:name="com.hana897trx.womenplustech.myAccount"
+        android:name="com.hana897trx.womenplustech.view.myAccount"
         android:label="fragment_my_account"
         tools:layout="@layout/fragment_my_account" >
         <action
