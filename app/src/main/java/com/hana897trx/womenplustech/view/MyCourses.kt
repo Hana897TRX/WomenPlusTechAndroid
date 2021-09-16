@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.API.APIMessages
 import com.hana897trx.womenplustech.model.Adapter.MyCoursesAdapter
 import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MyCourses : Fragment() {
+    private var apiMessages = APIMessages()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +42,17 @@ class MyCourses : Fragment() {
                 val adapter = MyCoursesAdapter(view.context,
                     R.layout.event_my_courses_layout, events)
                 rvCourses.adapter = adapter
+            }
+
+            for(e in events) {
+                lifecycleScope.launch(Dispatchers.Main) {
+                    val messages = apiMessages.getEventMessages(e.id)
+                    messages.observe(viewLifecycleOwner, {
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            db.messageDao().insertMessages(it)
+                        }
+                    })
+                }
             }
         }
     }

@@ -11,7 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.Utility.AppDB
 import com.hana897trx.womenplustech.view.EventInfo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class EventAdapter(private val context: Context,

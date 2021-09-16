@@ -5,7 +5,7 @@ import com.hana897trx.womenplustech.model.Models.User
 
 @Dao
 interface UserDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun newUser(user: User)
 
     @Update

@@ -8,10 +8,12 @@
         android:icon="@drawable/ic_courses_black"
         android:title="Mis cursos">
     </item>
+    <!--
     <item android:id="@+id/newsFragment"
         android:icon="@drawable/ic_mail_black"
         android:title="Noticias">
     </item>
+    -->
     <item android:id="@+id/myAccount"
         android:icon="@drawable/ic_account_black"
         android:title="Perfil">

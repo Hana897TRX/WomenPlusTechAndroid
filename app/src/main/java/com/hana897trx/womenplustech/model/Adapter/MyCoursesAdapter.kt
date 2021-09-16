@@ -11,7 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.Utility.AppDB
 import com.hana897trx.womenplustech.view.myCoursesMessages
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MyCoursesAdapter( private val context: Context,
                         private val layout: Int,
@@ -48,9 +53,19 @@ class MyCoursesAdapter( private val context: Context,
             txtCourseTitle!!.text = event.title
             txtCourseDescription!!.text = event.description
 
+            GlobalScope.launch(Dispatchers.IO) {
+                val db = AppDB.getInstance(context!!)
+                val notSeen = db.messageDao().countNotSeen(event.id)
+
+                withContext(Dispatchers.Main) {
+                    txtNotification?.text = notSeen.toString()
+                }
+            }
+
             cardCourseMessage!!.setOnClickListener {
                 val i = Intent(context, myCoursesMessages::class.java)
                 i.putExtra("_id", event.id)
+                txtNotification?.text = "0"
 
                 context!!.startActivity(i)
             }

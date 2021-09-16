@@ -14,15 +14,18 @@ import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.model.Models.Messages
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.MyMessagesBinding
+import com.hana897trx.womenplustech.model.API.APIMessages
 import com.hana897trx.womenplustech.model.Adapter.MessageAdapter
+import com.hana897trx.womenplustech.model.Utility.AppDB
 import com.hana897trx.womenplustech.viewmodel.MessagesViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class myCoursesMessages : AppCompatActivity() {
     private var messagesBinding : MyMessagesBinding? = null
     private var messageViewModel : MessagesViewModel? = null
     private var idEvent = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,15 +42,23 @@ class myCoursesMessages : AppCompatActivity() {
         }
 
         loadMessages()
+        setAsSeen()
     }
 
     private fun loadMessages() {
         val messages = messageViewModel?.getMessages(idEvent)
         messages?.observe(this, {
             val adapter = MessageAdapter(this, R.layout.message_layout, it)
-            messagesBinding?.rvMessages?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            messagesBinding?.rvMessages?.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true)
             messagesBinding?.rvMessages?.adapter = adapter
         })
+    }
+
+    private fun setAsSeen() {
+        val db = AppDB.getInstance(this@myCoursesMessages)
+        lifecycleScope.launch(Dispatchers.IO) {
+            db.messageDao().updateSeenAt(idEvent)
+        }
     }
 
 }

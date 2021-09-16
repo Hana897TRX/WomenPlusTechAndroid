@@ -3,6 +3,7 @@ package com.hana897trx.womenplustech.model.API
 import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.model.Models.Messages
@@ -11,6 +12,23 @@ import java.sql.Date
 class APIMessages {
     val fb = Firebase.firestore
     private var messages = MutableLiveData<List<Messages>>()
+    private var messageCount = MutableLiveData<Int>()
+
+    fun getEventMerssagesCount(idEvent: String) : MutableLiveData<Int> {
+        messageCount.value = 0
+
+        fb.collection("messages")
+            .whereEqualTo("idEvent", idEvent)
+            .get()
+            .addOnSuccessListener { documents ->
+                messageCount.value = documents.size()
+            }
+            .addOnFailureListener {
+                messageCount.value = 0
+            }
+
+        return messageCount
+    }
 
     fun getEventMessages(idEvent : String) : MutableLiveData<List<Messages>> {
         val listOfMessages = arrayListOf<Messages>()
@@ -25,7 +43,8 @@ class APIMessages {
                         document.id,
                         document.data["idEvent"].toString(),
                         document.data["message"].toString(),
-                        Date(document.getTimestamp("fechaEnvio")!!.seconds)
+                        Date(document.getTimestamp("fechaEnvio")!!.seconds),
+                        false
                     )
                     listOfMessages.add(message)
                 }

@@ -12,10 +12,15 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import com.facebook.drawee.view.SimpleDraweeView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.model.API.APIMessages
 import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.consumesAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.Date
@@ -26,6 +31,7 @@ class EventInfo : AppCompatActivity() {
     private var cardInformation : CardView? = null
     private var imgEvent : SimpleDraweeView? = null
     private var webContent : WebView? = null
+    private var apiMessages : APIMessages? = null
 
     private var event : Event? = null
 
@@ -37,6 +43,8 @@ class EventInfo : AppCompatActivity() {
         cardInformation = findViewById(R.id.cardInformation)
         imgEvent = findViewById(R.id.imgCourse)
         webContent = findViewById(R.id.webInscrib)
+
+        apiMessages = APIMessages()
 
         back()
         setInfoToView()
@@ -74,6 +82,13 @@ class EventInfo : AppCompatActivity() {
                     Toast.makeText(this@EventInfo, "Te has registrado a este evento correctamente", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            val messages = apiMessages?.getEventMessages(event!!.id)
+            messages?.observe(this, { it ->
+                lifecycleScope.launch(Dispatchers.IO) {
+                    db.messageDao().insertMessages(it)
+                }
+            })
         }
     }
 
