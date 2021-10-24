@@ -14,8 +14,10 @@
         android:title="Noticias">
     </item>
     -->
+    <!--
     <item android:id="@+id/myAccount"
         android:icon="@drawable/ic_account_black"
         android:title="Perfil">
     </item>
+    -->
 </menu>
