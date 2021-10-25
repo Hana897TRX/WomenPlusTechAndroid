@@ -34,7 +34,7 @@ import java.util.*
 // Documentation of Shared Storage
 // https://developer.android.com/training/data-storage/shared/documents-files
 
-class myAccount : Fragment() {
+class MyAccount : Fragment() {
     private lateinit var calendar : Calendar
     private var year : Int = 1
     private var month : Int = 1
@@ -52,7 +52,7 @@ class myAccount : Fragment() {
     private var COVER_CODE = 8707
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.create_account, container, false)
+        val view =  inflater.inflate(R.layout.fragment_log_in, container, false)
 
         //addFunctions(view)
         //calendarConfig(view)
