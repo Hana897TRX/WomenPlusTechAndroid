@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -103,6 +104,7 @@
                             android:ems="10"
                             android:hint="@string/name"
                             android:inputType="textPersonName"
+                            android:minHeight="48dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView8" />
@@ -127,7 +129,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:visibility="visible"
                     app:cardCornerRadius="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -196,7 +197,7 @@
                             android:layout_marginEnd="16dp"
                             android:dropDownWidth="match_parent"
                             android:entries="@array/gender"
-                            android:spinnerMode="dialog"
+                            android:spinnerMode="dropdown"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView14"
                             app:layout_constraintTop_toBottomOf="@+id/txtNacimiento" />
@@ -241,6 +242,7 @@
                             android:ems="10"
                             android:hint="@string/password"
                             android:inputType="textPassword"
+                            android:minHeight="48dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView15"
                             app:layout_constraintTop_toBottomOf="@+id/spinner" />
@@ -255,6 +257,7 @@
                             android:ems="10"
                             android:hint="@string/con_password"
                             android:inputType="textPassword"
+                            android:minHeight="48dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toEndOf="@+id/imageView15"

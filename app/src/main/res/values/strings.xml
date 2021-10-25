@@ -11,8 +11,8 @@
     <string name="register">Registrarse</string>
 
     <array name="gender">
-        <item>Masculino</item>
         <item>Femenino</item>
+        <item>Masculino</item>
         <item>No binarie</item>
         <item>Otro</item>
     </array>
