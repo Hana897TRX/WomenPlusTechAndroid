@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
         val data = homeViewModel?.getEvents()
         data?.observe(viewLifecycleOwner, {
             val adapter = EventAdapter(requireContext(), R.layout.event_layout, it)
-            fragmentHomeBinding?.rvEvents?.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+            fragmentHomeBinding?.rvEvents?.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
             fragmentHomeBinding?.rvEvents?.adapter = adapter
         })
     }

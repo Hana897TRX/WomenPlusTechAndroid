@@ -52,10 +52,10 @@ class myAccount : Fragment() {
     private var COVER_CODE = 8707
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.fragment_my_account, container, false)
+        val view =  inflater.inflate(R.layout.create_account, container, false)
 
-        addFunctions(view)
-        calendarConfig(view)
+        //addFunctions(view)
+        //calendarConfig(view)
 
         return view
     }
