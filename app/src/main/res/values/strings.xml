@@ -11,6 +11,9 @@
     <string name="register">Registrarse</string>
     <string name="login">Iniciar sesión</string>
     <string name="dont_have_account">¿No tienes una cuenta?, ¡Crea una haciendo click aquí!</string>
+    <string name="current_events">Eventos en curso</string>
+    <string name="in_progress">En progreso</string>
+    <string name="session">Sesion:</string>
 
     <array name="gender">
         <item>Femenino</item>
