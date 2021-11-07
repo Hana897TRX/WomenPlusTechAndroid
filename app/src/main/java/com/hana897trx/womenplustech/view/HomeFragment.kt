@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -71,7 +72,8 @@ class HomeFragment : Fragment() {
         val data = homeViewModel?.getEvents()
         data?.observe(viewLifecycleOwner, {
             val adapter = EventAdapter(requireContext(), R.layout.event_layout, it)
-            fragmentHomeBinding?.rvEvents?.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+            //fragmentHomeBinding?.rvEvents?.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+            fragmentHomeBinding?.rvEvents?.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             fragmentHomeBinding?.rvEvents?.adapter = adapter
         })
     }
