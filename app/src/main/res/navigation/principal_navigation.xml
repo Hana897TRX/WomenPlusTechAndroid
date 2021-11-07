@@ -6,7 +6,7 @@
     app:startDestination="@id/home">
     <fragment
         android:id="@+id/home"
-        android:name="com.hana897trx.womenplustech.view.HomeFragment"
+        android:name="com.hana897trx.womenplustech.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -55,7 +55,7 @@
         android:label="Login" />
     <fragment
         android:id="@+id/myAccount"
-        android:name="com.hana897trx.womenplustech.view.CreateAccount"
+        android:name="com.hana897trx.womenplustech.accountCreation.CreateAccount"
         android:label="fragment_my_account"
         tools:layout="@layout/fragment_my_account" />
 </navigation>

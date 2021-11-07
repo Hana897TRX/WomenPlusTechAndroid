@@ -3,26 +3,42 @@ package com.hana897trx.womenplustech.model.API
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hana897trx.womenplustech.model.Models.CampusEntity
 import com.hana897trx.womenplustech.model.Models.Event
+import com.hana897trx.womenplustech.model.Utility.StateResult
 import org.json.JSONArray
 import java.sql.Date
 
 class APIEvents {
     val fb = Firebase.firestore
-    private var campus = MutableLiveData<JSONArray>()
     private var events = MutableLiveData<List<Event>>()
 
-    fun getCampus() : MutableLiveData<JSONArray>  {
-        val data = JSONArray()
-        fb.collection("campus")
-            .get()
-            .addOnSuccessListener { result ->
+    suspend fun getCampus() : StateResult<List<CampusEntity>>  {
+        //val data = arrayListOf<CampusEntity>()
+        val data = fb.collection("campus").get()
+        /*return if(data.isSuccessful) {
+
+        }
+        else if(data.isCanceled) {
+            StateResult.Error(500)
+        }
+            /*.addOnSuccessListener { result ->
                 for(document in result)  {
-                    data.put(document.get("campusID").toString())
+                    val campus = CampusEntity(
+                        campusShort = document.get("campusID").toString(),
+                        campusId = document.id,
+                        campusName = document.get("campusName").toString()
+                    )
+                    data.add(campus)
                 }
-                campus.value = data
-            }
-        return campus
+            }*/
+        /*return if(data.isEmpty())
+            StateResult.Loading(true)
+        else
+            StateResult.Success(data)
+         */
+         */
+
     }
 
     fun getEvents() : MutableLiveData<List<Event>> {

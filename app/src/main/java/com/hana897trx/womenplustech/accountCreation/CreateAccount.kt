@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.view
+package com.hana897trx.womenplustech.accountCreation
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -35,6 +35,8 @@ import java.util.*
 // https://developer.android.com/training/data-storage/shared/documents-files
 
 class CreateAccount : Fragment() {
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.create_account, container, false)

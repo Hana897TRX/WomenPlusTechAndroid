@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.view
+package com.hana897trx.womenplustech.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

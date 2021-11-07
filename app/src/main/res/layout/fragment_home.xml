@@ -6,14 +6,14 @@
     <data>
         <variable
             name="model"
-            type="com.hana897trx.womenplustech.viewmodel.HomeViewModel" />
+            type="com.hana897trx.womenplustech.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F8F9FF"
-        tools:context=".view.HomeFragment">
+        tools:context=".home.HomeFragment">
 
         <ScrollView
             android:layout_width="match_parent"

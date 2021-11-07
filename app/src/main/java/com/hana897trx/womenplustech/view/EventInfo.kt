@@ -12,15 +12,11 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.lifecycleScope
 import com.facebook.drawee.view.SimpleDraweeView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.model.API.APIMessages
 import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.consumesAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.Date

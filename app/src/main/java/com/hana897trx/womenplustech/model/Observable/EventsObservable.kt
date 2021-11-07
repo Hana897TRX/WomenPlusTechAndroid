@@ -13,9 +13,10 @@ class EventsObservable() : BaseObservable() {
         api = APIEvents()
     }
 
+    /*
     fun getCampus() : MutableLiveData<JSONArray> {
         return api.getCampus()
-    }
+    }*/
 
     fun getEvents() : MutableLiveData<List<Event>> {
         return api.getEvents()
