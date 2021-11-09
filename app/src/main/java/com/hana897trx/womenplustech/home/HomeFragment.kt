@@ -40,13 +40,15 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            categoriesObservable()
-            eventsObservable()
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                categoriesObservable()
+                eventsObservable()
+            }
         }
     }
 
     private suspend fun categoriesObservable() {
-        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+        lifecycleScope.launch {
             homeViewModel.campusDataUI.collect {
                 when(it) {
                     is CampusDataUI.Success -> spCampus(it.data)
@@ -58,7 +60,7 @@ class HomeFragment : Fragment() {
     }
 
     private suspend fun eventsObservable() {
-        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+        lifecycleScope.launch {
             homeViewModel.eventsUIState.collect {
                 when(it){
                     is EventsDataUI.Success -> setEvents(it.data)

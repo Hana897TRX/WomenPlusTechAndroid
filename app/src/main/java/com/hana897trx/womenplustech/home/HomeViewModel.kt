@@ -11,6 +11,7 @@ import com.hana897trx.womenplustech.model.Observable.EventsObservable
 import com.hana897trx.womenplustech.model.Utility.StateResult
 import com.hana897trx.womenplustech.model.usecases.CampusUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 
@@ -21,7 +22,7 @@ class HomeViewModel() : ViewModel() {
     val eventsUIState = _eventsUIState
 
     private val _campusUIState : MutableStateFlow<CampusDataUI> = MutableStateFlow(CampusDataUI.Loading(true))
-    val campusDataUI = _campusUIState
+    val campusDataUI : StateFlow<CampusDataUI> = _campusUIState
 
     init {
         getCampusData()
@@ -36,7 +37,7 @@ class HomeViewModel() : ViewModel() {
         }
     }
 
-    private fun getEventsData() = viewModelScope.launch {
+    internal fun getEventsData() = viewModelScope.launch {
         when(val response = api.getEvents()) {
             is StateResult.Success -> _eventsUIState.emit(EventsDataUI.Success(response.data))
             is StateResult.Loading -> _eventsUIState.emit(EventsDataUI.Loading(response.loading))
