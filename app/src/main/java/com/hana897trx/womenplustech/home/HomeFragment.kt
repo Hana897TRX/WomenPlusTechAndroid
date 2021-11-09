@@ -16,7 +16,9 @@ import com.hana897trx.womenplustech.model.Adapter.EventAdapter
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.FragmentHomeBinding
 import com.hana897trx.womenplustech.model.Models.CampusEntity
+import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.model.Observable.CampusDataUI
+import com.hana897trx.womenplustech.model.Observable.EventsDataUI
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -26,7 +28,6 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         Fresco.initialize(requireContext());
     }
 
@@ -40,51 +41,46 @@ class HomeFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             categoriesObservable()
+            eventsObservable()
         }
-
-        //spCampus()
-        events()
     }
 
     private suspend fun categoriesObservable() {
         viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
             homeViewModel.campusDataUI.collect {
                 when(it) {
-                    is CampusDataUI.Success -> {spCampus(it.data)}
+                    is CampusDataUI.Success -> spCampus(it.data)
                     is CampusDataUI.Loading -> {}
                     is CampusDataUI.Error -> {}
                 }
             }
         }
+    }
 
+    private suspend fun eventsObservable() {
+        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+            homeViewModel.eventsUIState.collect {
+                when(it){
+                    is EventsDataUI.Success -> setEvents(it.data)
+                    is EventsDataUI.Loading -> {}
+                    is EventsDataUI.Error -> {}
+                }
+            }
+        }
     }
 
     private fun spCampus(data : List<CampusEntity>) = binding.apply {
         val campusShort = arrayListOf<String>()
         for(campus in data) {
-            campusShort.add(campus.campusShort)
+            campusShort.add(campus.campusName!!)
         }
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, campusShort)
         spCampus.adapter = adapter
-
-        /*val data = homeViewModel?.getCampus()
-        data?.observe(viewLifecycleOwner, {
-            val campus = arrayListOf<String>()
-            for(i in 0 until it.length()){
-                campus.add(it[i].toString())
-            }
-            val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, campus)
-            binding?.spCampus?.adapter = adapter
-        })
-         */
     }
 
-    private fun events() {
-        val data = homeViewModel.getEvents()
-        data.observe(viewLifecycleOwner, {
-            val adapter = EventAdapter(requireContext(), R.layout.event_layout, it)
-            binding.rvEvents.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
-            binding.rvEvents.adapter = adapter
-        })
+    private fun setEvents(data : List<Event>) = binding.apply {
+        val adapter = EventAdapter(requireContext(), R.layout.event_layout, data)
+        rvEvents.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+        rvEvents.adapter = adapter
     }
 }

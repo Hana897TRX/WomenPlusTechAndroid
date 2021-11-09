@@ -1,7 +1,7 @@
 package com.hana897trx.womenplustech.model.Models
 
 data class CampusEntity (
-        val campusId : String,
+        var campusID : String?,
         val campusShort : String,
-        val campusName : String
+        var campusName : String?
     )
