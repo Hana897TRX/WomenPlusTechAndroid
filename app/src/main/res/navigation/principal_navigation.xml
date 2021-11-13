@@ -52,5 +52,18 @@
     <fragment
         android:id="@+id/login"
         android:name="com.hana897trx.womenplustech.view.Login"
-        android:label="Login" />
+        android:label="Login" >
+        <action
+            android:id="@+id/action_login_to_createAccountFragment2"
+            app:destination="@id/createAccountFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment2"
+        android:name="com.hana897trx.womenplustech.CreateAccountFragment"
+        android:label="fragment_create_account"
+        tools:layout="@layout/fragment_create_account" >
+        <action
+            android:id="@+id/action_createAccountFragment2_to_login"
+            app:destination="@id/login" />
+    </fragment>
 </navigation>

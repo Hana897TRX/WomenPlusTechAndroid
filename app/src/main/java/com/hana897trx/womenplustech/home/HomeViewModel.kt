@@ -1,19 +1,14 @@
 package com.hana897trx.womenplustech.home
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hana897trx.womenplustech.model.API.APIEvents
-import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.model.Observable.CampusDataUI
 import com.hana897trx.womenplustech.model.Observable.EventsDataUI
-import com.hana897trx.womenplustech.model.Observable.EventsObservable
 import com.hana897trx.womenplustech.model.Utility.StateResult
-import com.hana897trx.womenplustech.model.usecases.CampusUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 
 class HomeViewModel() : ViewModel() {
     private val api = APIEvents()

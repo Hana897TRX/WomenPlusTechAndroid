@@ -14,7 +14,7 @@ class Login : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLogInBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_log_in, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -23,7 +23,7 @@ class Login : Fragment() {
 
     private fun goToAccountCreation() = binding.apply {
         btnGoToCreateAccount.setOnClickListener {
-            findNavController().navigate(R.id.action_login2_to_createAccountFragment)
+            findNavController().navigate(R.id.action_login_to_createAccountFragment2)
         }
     }
 }
