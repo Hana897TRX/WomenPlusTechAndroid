@@ -17,7 +17,7 @@
             app:destination="@id/newsFragment" />
         <action
             android:id="@+id/myAccount"
-            app:destination="@id/myAccount" />
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/myCourses"
@@ -32,7 +32,7 @@
             app:destination="@id/home" />
         <action
             android:id="@+id/myAccount"
-            app:destination="@id/myAccount" />
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -47,15 +47,10 @@
             app:destination="@id/myCourses" />
         <action
             android:id="@+id/myAccount"
-            app:destination="@id/myAccount" />
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/login"
         android:name="com.hana897trx.womenplustech.view.Login"
         android:label="Login" />
-    <fragment
-        android:id="@+id/myAccount"
-        android:name="com.hana897trx.womenplustech.accountCreation.CreateAccount"
-        android:label="fragment_my_account"
-        tools:layout="@layout/fragment_my_account" />
 </navigation>

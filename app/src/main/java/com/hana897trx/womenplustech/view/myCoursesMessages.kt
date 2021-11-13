@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 
 
 class myCoursesMessages : AppCompatActivity() {
+    /*
     private var messagesBinding : MyMessagesBinding? = null
     private var messageViewModel : MessagesViewModel? = null
     private var idEvent = ""
@@ -60,5 +61,5 @@ class myCoursesMessages : AppCompatActivity() {
             db.messageDao().updateSeenAt(idEvent)
         }
     }
-
+    */
 }

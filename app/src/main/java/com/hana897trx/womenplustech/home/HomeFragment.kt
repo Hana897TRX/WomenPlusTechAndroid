@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.GridLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.hana897trx.womenplustech.model.Adapter.EventAdapter
@@ -82,7 +84,7 @@ class HomeFragment : Fragment() {
 
     private fun setEvents(data : List<Event>) = binding.apply {
         val adapter = EventAdapter(requireContext(), R.layout.event_layout, data)
-        rvEvents.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL, false)
+        rvEvents.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
         rvEvents.adapter = adapter
     }
 }

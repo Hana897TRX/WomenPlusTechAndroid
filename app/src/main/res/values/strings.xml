@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_account">Crear una cuenta</string>
-    <string name="email">Email</string>
+    <string name="email">example@womenplustech.mx</string>
     <string name="name">Nombre completo</string>
     <string name="birthday">Fecha de nacimiento</string>
     <string name="password">Password</string>
