@@ -33,6 +33,9 @@
         <action
             android:id="@+id/myAccount"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_myCourses_to_myCoursesMessagesFragment"
+            app:destination="@id/myCoursesMessagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -65,5 +68,14 @@
         <action
             android:id="@+id/action_createAccountFragment2_to_login"
             app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCoursesMessagesFragment"
+        android:name="com.hana897trx.womenplustech.MyCourses.Messages.MyCoursesMessagesFragment"
+        android:label="fragment_my_courses_messages"
+        tools:layout="@layout/fragment_my_courses_messages" >
+        <action
+            android:id="@+id/action_myCoursesMessagesFragment_to_myCourses"
+            app:destination="@id/myCourses" />
     </fragment>
 </navigation>

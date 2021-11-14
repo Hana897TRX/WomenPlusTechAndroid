@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.model.Adapter
+package com.hana897trx.womenplustech.MyCourses.Messages
 
 import android.content.Context
 import android.view.LayoutInflater

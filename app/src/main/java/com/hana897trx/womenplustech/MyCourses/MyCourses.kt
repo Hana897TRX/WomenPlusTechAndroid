@@ -6,20 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.*
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.FragmentMyCoursesBinding
-import com.hana897trx.womenplustech.databinding.MyCurrentEventsBinding
-import com.hana897trx.womenplustech.model.API.APIMessages
-import com.hana897trx.womenplustech.model.Adapter.MyCoursesAdapter
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.model.Observable.EventsDataUI
-import com.hana897trx.womenplustech.model.Utility.AppDB
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MyCourses : Fragment() {
     private lateinit var binding : FragmentMyCoursesBinding
@@ -56,34 +50,4 @@ class MyCourses : Fragment() {
         rvMyCourses.layoutManager = LinearLayoutManager(root.context, LinearLayoutManager.VERTICAL, false)
         rvMyCourses.adapter = MyCoursesAdapter(root.context, R.layout.event_my_courses_layout, data)
     }
-
-    /*
-    private suspend fun loadMyCourses(view : View){
-        val rvCourses = view.findViewById<RecyclerView>(R.id.rvMyCourses)
-        val db = AppDB.getInstance(requireContext())
-
-        rvCourses.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            val events : List<Event> = db.eventDao().getRegisterEvents()
-
-            withContext(Dispatchers.Main) {
-                val adapter = MyCoursesAdapter(view.context,
-                    R.layout.event_my_courses_layout, events)
-                rvCourses.adapter = adapter
-            }
-
-            for(e in events) {
-                lifecycleScope.launch(Dispatchers.Main) {
-                    val messages = apiMessages.getEventMessages(e.id)
-                    messages.observe(viewLifecycleOwner, {
-                        lifecycleScope.launch(Dispatchers.IO) {
-                            db.messageDao().insertMessages(it)
-                        }
-                    })
-                }
-            }
-        }
-    }
-     */
 }

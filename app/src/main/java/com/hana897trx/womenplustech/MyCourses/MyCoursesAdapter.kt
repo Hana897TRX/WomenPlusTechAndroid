@@ -1,18 +1,18 @@
-package com.hana897trx.womenplustech.model.Adapter
+package com.hana897trx.womenplustech.MyCourses
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.model.Utility.AppDB
-import com.hana897trx.womenplustech.MyCourses.Messages.MyCoursesMessages
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -63,11 +63,8 @@ class MyCoursesAdapter( private val context: Context,
             }
 
             cardCourseMessage!!.setOnClickListener {
-                val i = Intent(context, MyCoursesMessages::class.java)
-                i.putExtra("_id", event.id)
-                txtNotification?.text = "0"
-
-                context!!.startActivity(i)
+                val bundle = bundleOf("idEvent" to event.id)
+                it.findNavController().navigate(R.id.action_myCourses_to_myCoursesMessagesFragment, bundle)
             }
         }
     }
