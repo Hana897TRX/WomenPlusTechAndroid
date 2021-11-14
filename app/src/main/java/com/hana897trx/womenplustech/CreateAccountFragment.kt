@@ -9,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import com.hana897trx.womenplustech.databinding.FragmentCreateAccountBinding
 
 class CreateAccountFragment : Fragment() {
-
     private lateinit var binding : FragmentCreateAccountBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

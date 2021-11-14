@@ -7,6 +7,8 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.hana897trx.womenplustech.model.Models.Messages
+import com.hana897trx.womenplustech.model.Utility.StateResult
+import kotlinx.coroutines.tasks.await
 import java.sql.Date
 
 class APIMessages {
@@ -30,37 +32,26 @@ class APIMessages {
         return messageCount
     }
 
-    fun getEventMessages(idEvent : String) : MutableLiveData<List<Messages>> {
-        val listOfMessages = arrayListOf<Messages>()
-
-        fb.collection("messages")
+    suspend fun getEventMessages(idEvent : String) : StateResult<List<Messages>> {
+        val documents = fb.collection("messages")
             .whereEqualTo("idEvent", idEvent)
             .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents){
-
-                    val message = Messages(
-                        document.id,
-                        document.data["idEvent"].toString(),
-                        document.data["message"].toString(),
-                        Date(document.getTimestamp("fechaEnvio")!!.seconds),
-                        false
-                    )
-                    listOfMessages.add(message)
-                }
-
-                listOfMessages.sortByDescending { it.fecha_envio }
-
-                //val adapter = MessageAdapter(this@myCoursesMessages,
-                //R.layout.message_layout, listOfMessages)
-                //rvMessages.layoutManager = LinearLayoutManager(this@myCoursesMessages, LinearLayoutManager.VERTICAL, false)
-                //rvMessages.adapter = adapter
-                messages.value = listOfMessages
+            .await()
+        if(!documents.isEmpty) {
+            val data = arrayListOf<Messages>()
+            for (document in documents){
+                val message = Messages(
+                    document.id,
+                    document.data["idEvent"].toString(),
+                    document.data["message"].toString(),
+                    Date(document.getTimestamp("fechaEnvio")!!.seconds),
+                    false
+                )
+                data.add(message)
             }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents.", exception)
-            }
-
-        return messages
+            return StateResult.Success(data)
+        }
+        else
+            return StateResult.Error(500)
     }
 }

@@ -17,7 +17,7 @@ class HomeViewModel() : ViewModel() {
     val eventsUIState = _eventsUIState
 
     private val _campusUIState : MutableStateFlow<CampusDataUI> = MutableStateFlow(CampusDataUI.Loading(true))
-    val campusDataUI : StateFlow<CampusDataUI> = _campusUIState
+    val campusDataUI = _campusUIState
 
     init {
         getCampusData()
@@ -32,7 +32,7 @@ class HomeViewModel() : ViewModel() {
         }
     }
 
-    internal fun getEventsData() = viewModelScope.launch {
+    private fun getEventsData() = viewModelScope.launch {
         when(val response = api.getEvents()) {
             is StateResult.Success -> _eventsUIState.emit(EventsDataUI.Success(response.data))
             is StateResult.Loading -> _eventsUIState.emit(EventsDataUI.Loading(response.loading))

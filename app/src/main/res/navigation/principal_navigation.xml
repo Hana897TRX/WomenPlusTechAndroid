@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/myCourses"
-        android:name="com.hana897trx.womenplustech.view.MyCourses"
+        android:name="com.hana897trx.womenplustech.MyCourses.MyCourses"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" >
         <action

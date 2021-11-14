@@ -12,7 +12,7 @@ import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.model.Utility.AppDB
-import com.hana897trx.womenplustech.view.myCoursesMessages
+import com.hana897trx.womenplustech.MyCourses.Messages.MyCoursesMessages
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -63,7 +63,7 @@ class MyCoursesAdapter( private val context: Context,
             }
 
             cardCourseMessage!!.setOnClickListener {
-                val i = Intent(context, myCoursesMessages::class.java)
+                val i = Intent(context, MyCoursesMessages::class.java)
                 i.putExtra("_id", event.id)
                 txtNotification?.text = "0"
 

@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.facebook.drawee.view.SimpleDraweeView
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.R
+import com.hana897trx.womenplustech.databinding.ActivityEventInfoBinding
 import com.hana897trx.womenplustech.model.API.APIMessages
 import com.hana897trx.womenplustech.model.Utility.AppDB
 import kotlinx.coroutines.Dispatchers
@@ -23,37 +24,28 @@ import java.sql.Date
 
 
 class EventInfo : AppCompatActivity() {
-    private var cardBtnBack : CardView? = null
-    private var cardInformation : CardView? = null
-    private var imgEvent : SimpleDraweeView? = null
-    private var webContent : WebView? = null
-    private var apiMessages : APIMessages? = null
+    private lateinit var binding : ActivityEventInfoBinding
 
     private var event : Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_event_info)
 
-        cardBtnBack = findViewById(R.id.cardBtnBack)
-        cardInformation = findViewById(R.id.cardInformation)
-        imgEvent = findViewById(R.id.imgCourse)
-        webContent = findViewById(R.id.webInscrib)
+        binding = ActivityEventInfoBinding.inflate(layoutInflater)
 
-        apiMessages = APIMessages()
+        setContentView(binding.root)
 
         back()
         setInfoToView()
         btnInscribirse()
     }
 
-    private fun back(){
-        val btnBack = findViewById<Button>(R.id.btnBack)
+    private fun back() = binding.apply {
         btnBack.setOnClickListener {
-            if(imgEvent!!.visibility == View.GONE){
-                cardInformation!!.visibility = View.VISIBLE
-                imgEvent!!.visibility = View.VISIBLE
-                webContent!!.visibility = View.GONE
+            if(imgCourse.visibility == View.GONE){
+                cardInformation.visibility = View.VISIBLE
+                imgCourse.visibility = View.VISIBLE
+                webInscrib.visibility = View.GONE
             }
             else
                 finish()
@@ -78,17 +70,10 @@ class EventInfo : AppCompatActivity() {
                     Toast.makeText(this@EventInfo, "Te has registrado a este evento correctamente", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            val messages = apiMessages?.getEventMessages(event!!.id)
-            messages?.observe(this, { it ->
-                lifecycleScope.launch(Dispatchers.IO) {
-                    db.messageDao().insertMessages(it)
-                }
-            })
         }
     }
 
-    private fun setInfoToView(){
+    private fun setInfoToView() = binding.apply {
         event = Event(
             intent.getStringExtra("id")!!,
             intent.getStringExtra("title")!!,
@@ -104,18 +89,12 @@ class EventInfo : AppCompatActivity() {
             Date.valueOf(intent.getStringExtra("fechaInicio"))
         )
 
-        imgEvent!!.setImageURI(Uri.parse(event!!.eventImage))
-        val txtTitle = findViewById<TextView>(R.id.txtEventTitle)
-        txtTitle.text = event!!.title
-        val txtEventType = findViewById<TextView>(R.id.txtEventType)
+        imgCourse.setImageURI(Uri.parse(event!!.eventImage))
+        txtEventTitle.text = event!!.title
         txtEventType.text = event!!.eventType
-        val txtCampus = findViewById<TextView>(R.id.txtEventType)
         txtCampus.text = event!!.campus
-        val txtFechaInicio = findViewById<TextView>(R.id.txtFechaInicio)
         txtFechaInicio.text = event!!.fechaInicio.toString()
-        val txtDescription = findViewById<TextView>(R.id.txtDescription)
         txtDescription.text = event!!.description
-        val txtTemary = findViewById<TextView>(R.id.txtTemary)
         txtTemary.text = event!!.temary
     }
 }
