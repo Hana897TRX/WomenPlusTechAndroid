@@ -19,7 +19,7 @@ data class User (
     val password : String? = null,
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    val imgProfile : ByteArray,
+    val imgProfile : ByteArray? = null,
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     val imgCover : ByteArray? = null

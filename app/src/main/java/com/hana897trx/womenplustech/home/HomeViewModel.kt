@@ -43,12 +43,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                 val mail = sp.getString("email", "")
                 val password = sp.getString("password", "")
 
-                withContext(Dispatchers.IO) {
-                    val user = db.logIn(mail!!, password!!)
-                    if(user != null)
-                        _userDataUIState.emit(UserDataUI.Sucess(user))
-                    else
-                        _userDataUIState.emit(UserDataUI.Error)
+                if(!mail.isNullOrEmpty() && !password.isNullOrEmpty()) {
+                    withContext(Dispatchers.IO) {
+                        val user = db.logIn(mail, password)
+                        if (user != null)
+                            _userDataUIState.emit(UserDataUI.Sucess(user))
+                        else
+                            _userDataUIState.emit(UserDataUI.Error)
+                    }
                 }
             }
         }

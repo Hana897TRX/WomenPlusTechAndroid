@@ -48,6 +48,7 @@ class HomeFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 categoriesObservable()
                 eventsObservable()
+                userObservable()
             }
         }
     }
