@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.GridLayout
+import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -19,8 +20,10 @@ import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.FragmentHomeBinding
 import com.hana897trx.womenplustech.model.Models.CampusEntity
 import com.hana897trx.womenplustech.model.Models.Event
+import com.hana897trx.womenplustech.model.Models.User
 import com.hana897trx.womenplustech.model.Observable.CampusDataUI
 import com.hana897trx.womenplustech.model.Observable.EventsDataUI
+import com.hana897trx.womenplustech.model.Observable.UserDataUI
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -45,6 +48,23 @@ class HomeFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 categoriesObservable()
                 eventsObservable()
+            }
+        }
+    }
+
+    private suspend fun userObservable() {
+        lifecycleScope.launch {
+            homeViewModel.userDataUI.collect {
+                when(it) {
+                    is UserDataUI.Sucess -> {
+                        binding.txtUsername.text = it.data.userName!!.split(" ")[0]
+                    }
+                    is UserDataUI.Loading -> { }
+                    is UserDataUI.Error -> {
+                        Toast.makeText(requireContext(), R.string.user_modified, Toast.LENGTH_SHORT).show()
+                        binding.txtUsername.text = getString(R.string.guest)
+                    }
+                }
             }
         }
     }

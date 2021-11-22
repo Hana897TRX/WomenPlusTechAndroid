@@ -8,19 +8,19 @@ import java.sql.Date
 @Entity
 data class User (
     @PrimaryKey
-    val id : Long,
+    val id : Long = 0,
 
-    val userName : String,
+    val userName : String? = null,
 
-    val birthDate : Date,
+    val birthDate : Date? = null,
 
-    val email : String,
+    val email : String? = null,
 
-    val password : String,
+    val password : String? = null,
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     val imgProfile : ByteArray,
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    val imgCover : ByteArray
+    val imgCover : ByteArray? = null
     )

@@ -13,4 +13,7 @@ interface EventDao {
 
     @Query("SELECT Event.* FROM Event")
     fun getRegisterEvents() : List<Event>
+
+    @Query("SELECT * FROM Event WHERE Event.userId = :idUser")
+    fun getRegisterEvents(idUser: Long) : List<Event>
 }

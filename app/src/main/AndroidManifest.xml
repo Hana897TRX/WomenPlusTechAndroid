@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WomenTech">
-        <activity android:name="com.hana897trx.womenplustech.MyCourses.Messages.MyCoursesMessages"></activity>
+        <activity android:name="com.hana897trx.womenplustech.myCourses.Messages.MyCoursesMessages"></activity>
         <activity android:name=".view.EventInfo" />
         <activity android:name=".home.MainActivity"
             android:exported="true">

@@ -1,22 +1,17 @@
-package com.hana897trx.womenplustech.MyCourses
+package com.hana897trx.womenplustech.myCourses
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hana897trx.womenplustech.model.API.APIMessages
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.model.Observable.EventsDataUI
-import com.hana897trx.womenplustech.model.Observable.MyCoursesDataUI
 import com.hana897trx.womenplustech.model.Utility.AppDB
 import com.hana897trx.womenplustech.model.Utility.StateResult
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
 
 /** Created by Gabriela Fernanda Soto Ramirez
   * @author : @Hana897TRX

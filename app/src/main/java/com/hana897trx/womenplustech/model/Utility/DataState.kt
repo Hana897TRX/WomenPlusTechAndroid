@@ -3,6 +3,7 @@ package com.hana897trx.womenplustech.model.Observable
 import com.hana897trx.womenplustech.model.Models.CampusEntity
 import com.hana897trx.womenplustech.model.Models.Event
 import com.hana897trx.womenplustech.model.Models.Messages
+import com.hana897trx.womenplustech.model.Models.User
 
 sealed class CampusDataUI {
     data class Success(val data : List<CampusEntity>) : CampusDataUI()
@@ -26,4 +27,10 @@ sealed class MyMessagesDataUI {
     data class Success(val data : List<Messages>) : MyMessagesDataUI()
     object Error : MyMessagesDataUI()
     data class Loading(val loading: Boolean) : MyMessagesDataUI()
+}
+
+sealed class UserDataUI {
+    data class Sucess(val data : User) : UserDataUI()
+    object Error : UserDataUI()
+    data class Loading(val loading: Boolean) : UserDataUI()
 }

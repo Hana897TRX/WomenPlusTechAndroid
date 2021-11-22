@@ -20,5 +20,6 @@ data class Event(
         var eventImage : String,
         var temary : String,
         var eventType : String,
-        var fechaInicio : Date
+        var fechaInicio : Date,
+        var userId : Long? = null
     )

@@ -14,6 +14,11 @@
     <string name="current_events">Eventos en curso</string>
     <string name="in_progress">En progreso</string>
     <string name="session">Sesion:</string>
+    <string name="already_register">Este email ya ha sido registrado, puedes reiniciar la contraseña en la pantall de inicio de sesión</string>
+    <string name="user_registered">Te has registrado correctamente</string>
+    <string name="user_modified">El usuario se ha intentado modificar, inicie sesión nuevamente</string>
+    <string name="guest">Invitada</string>
+    <string name="wrong_user_or_password">Usuario o contraseña incorrecto</string>
 
     <array name="gender">
         <item>Femenino</item>

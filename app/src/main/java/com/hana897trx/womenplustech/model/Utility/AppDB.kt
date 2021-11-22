@@ -23,7 +23,7 @@ abstract class AppDB : RoomDatabase(){
 
         fun getInstance(context: Context) : AppDB {
             if(INSTANCE == null){
-                INSTANCE = Room.databaseBuilder(context, AppDB::class.java, "Events").build()
+                INSTANCE = Room.databaseBuilder(context, AppDB::class.java, "WPTData").build()
             }
             return INSTANCE as AppDB
         }

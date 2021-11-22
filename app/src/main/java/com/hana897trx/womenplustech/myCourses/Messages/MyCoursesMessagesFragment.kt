@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.MyCourses.Messages
+package com.hana897trx.womenplustech.myCourses.Messages
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,7 +25,7 @@ class MyCoursesMessagesFragment : Fragment() {
     private lateinit var viewModel : MessagesViewModel
     private var idEvent = ""
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMyCoursesMessagesBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -67,7 +67,7 @@
                             app:layout_constraintVertical_bias="0.29">
 
                             <ImageView
-                                android:id="@+id/imageView3"
+                                android:id="@+id/imgProfile"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:elevation="0dp"
@@ -165,7 +165,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <EditText
-                            android:id="@+id/txtNacimiento"
+                            android:id="@+id/txtBirthday"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -191,7 +191,7 @@
                             app:srcCompat="@drawable/ic_calendar_black" />
 
                         <Spinner
-                            android:id="@+id/spinner"
+                            android:id="@+id/spGender"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginStart="16dp"
@@ -202,7 +202,7 @@
                             android:spinnerMode="dropdown"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView14"
-                            app:layout_constraintTop_toBottomOf="@+id/txtNacimiento" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtBirthday" />
 
                         <ImageView
                             android:id="@+id/imageView14"
@@ -211,7 +211,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="24dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtNacimiento"
+                            app:layout_constraintTop_toBottomOf="@+id/txtBirthday"
                             app:srcCompat="@drawable/ic_moon" />
 
                         <ImageView
@@ -221,7 +221,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="24dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/spinner"
+                            app:layout_constraintTop_toBottomOf="@+id/spGender"
                             app:srcCompat="@drawable/ic_key" />
 
                         <ImageView
@@ -231,11 +231,11 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="24dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+                            app:layout_constraintTop_toBottomOf="@+id/txtPassword"
                             app:srcCompat="@drawable/ic_key" />
 
                         <EditText
-                            android:id="@+id/editTextTextPassword"
+                            android:id="@+id/txtPassword"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -247,10 +247,10 @@
                             android:minHeight="48dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView15"
-                            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+                            app:layout_constraintTop_toBottomOf="@+id/spGender" />
 
                         <EditText
-                            android:id="@+id/editTextTextPassword2"
+                            android:id="@+id/txtPasswordConfirm"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -263,7 +263,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toEndOf="@+id/imageView15"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
                         <Button
                             android:id="@+id/btnRegister"
@@ -278,7 +278,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtPasswordConfirm" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>

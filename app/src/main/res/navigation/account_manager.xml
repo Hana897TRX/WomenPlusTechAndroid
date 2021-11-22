@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login2"
-        android:name="com.hana897trx.womenplustech.view.Login"
+        android:name="com.hana897trx.womenplustech.Login.Login"
         android:label="Login" >
         <action
             android:id="@+id/action_login2_to_createAccountFragment"

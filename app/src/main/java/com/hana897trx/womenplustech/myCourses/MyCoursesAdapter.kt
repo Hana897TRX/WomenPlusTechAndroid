@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech.MyCourses
+package com.hana897trx.womenplustech.myCourses
 
 import android.content.Context
 import android.net.Uri

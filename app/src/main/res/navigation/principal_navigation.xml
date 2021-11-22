@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/myCourses"
-        android:name="com.hana897trx.womenplustech.MyCourses.MyCourses"
+        android:name="com.hana897trx.womenplustech.myCourses.MyCourses"
         android:label="fragment_my_courses"
         tools:layout="@layout/fragment_my_courses" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/login"
-        android:name="com.hana897trx.womenplustech.view.Login"
+        android:name="com.hana897trx.womenplustech.Login.Login"
         android:label="Login" >
         <action
             android:id="@+id/action_login_to_createAccountFragment2"
@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/myCoursesMessagesFragment"
-        android:name="com.hana897trx.womenplustech.MyCourses.Messages.MyCoursesMessagesFragment"
+        android:name="com.hana897trx.womenplustech.myCourses.Messages.MyCoursesMessagesFragment"
         android:label="fragment_my_courses_messages"
         tools:layout="@layout/fragment_my_courses_messages" >
         <action
