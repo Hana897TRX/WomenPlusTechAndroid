@@ -7,6 +7,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView12"
         android:layout_width="0dp"
         android:layout_height="600dp"
         android:elevation="6dp"
@@ -29,16 +30,17 @@
                 app:cardBackgroundColor="#F8F9FF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" >
+                app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEvents"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/my_current_events" />
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -46,12 +48,12 @@
                 android:textColor="#9d2a87"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView11"
+                app:layout_constraintBottom_toTopOf="@+id/txtPosition"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/txtPosition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -89,7 +91,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView14"
+                        android:id="@+id/txtInProgress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="En curso"
@@ -99,14 +101,14 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView16"
+                        android:id="@+id/txtInCurrentTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                        app:layout_constraintTop_toBottomOf="@+id/txtInProgress" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
@@ -125,17 +127,17 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/txt_events_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="15"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                        app:layout_constraintTop_toBottomOf="@+id/txtEvents" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/txtEvents"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Eventos"
@@ -151,6 +153,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView11"
         android:layout_width="175dp"
         android:layout_height="175dp"
         android:layout_marginTop="48dp"
@@ -163,11 +166,40 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/imgProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             app:srcCompat="@drawable/woman" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        app:layout_constraintBottom_toTopOf="@+id/cardView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_back_black" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

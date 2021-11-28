@@ -1,4 +1,4 @@
-package com.hana897trx.womenplustech
+package com.hana897trx.womenplustech.accountCreation
 
 import android.app.DatePickerDialog
 import android.graphics.Bitmap
@@ -9,10 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.facebook.common.util.Hex
+import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.FragmentCreateAccountBinding
 import com.hana897trx.womenplustech.model.Models.User
 import com.hana897trx.womenplustech.model.Utility.AppDB

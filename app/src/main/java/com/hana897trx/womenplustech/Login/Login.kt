@@ -6,16 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.FragmentLogInBinding
+import com.hana897trx.womenplustech.model.Models.User
 import com.hana897trx.womenplustech.model.Observable.UserDataUI
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Login : Fragment() {
     private lateinit var binding : FragmentLogInBinding
@@ -47,10 +54,17 @@ class Login : Fragment() {
     private fun userObservable() = lifecycleScope.launch {
         viewModel.userDataUI.collect {
             when(it) {
-                is UserDataUI.Sucess -> { Toast.makeText(requireContext(), "Has iniciado sesion", Toast.LENGTH_SHORT).show() }
+                is UserDataUI.Sucess -> { goToAccountInfo(it.data) }
                 is UserDataUI.Loading -> {}
                 is UserDataUI.Error -> { Toast.makeText(requireContext(), R.string.wrong_user_or_password, Toast.LENGTH_SHORT).show() }
             }
+        }
+    }
+
+    private fun goToAccountInfo(user : User) {
+        val bundle = bundleOf("idUser" to user.id)
+        if( findNavController().currentDestination!!.id != R.id.action_login_to_createAccountFragment2 ) {
+            findNavController().navigate(R.id.action_login_to_userProfileFragment2, bundle)
         }
     }
 
