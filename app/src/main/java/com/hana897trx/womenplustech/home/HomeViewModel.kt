@@ -22,13 +22,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val sp = application.getSharedPreferences("remember-user", Context.MODE_PRIVATE)
     private val db = AppDB.getInstance(application.applicationContext).userDao()
 
-    private val _eventsUIState : MutableStateFlow<EventsDataUI> = MutableStateFlow(EventsDataUI.Loading(true))
+    private val _eventsUIState: MutableStateFlow<EventsDataUI> =
+        MutableStateFlow(EventsDataUI.Loading(true))
     val eventsUIState = _eventsUIState
 
-    private val _campusUIState : MutableStateFlow<CampusDataUI> = MutableStateFlow(CampusDataUI.Loading(true))
+    private val _campusUIState: MutableStateFlow<CampusDataUI> =
+        MutableStateFlow(CampusDataUI.Loading(true))
     val campusDataUI = _campusUIState
 
-    private val _userDataUIState : MutableStateFlow<UserDataUI> = MutableStateFlow(UserDataUI.Loading(true))
+    private val _userDataUIState: MutableStateFlow<UserDataUI> =
+        MutableStateFlow(UserDataUI.Loading(true))
     val userDataUI = _userDataUIState
 
     init {
@@ -38,26 +41,24 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun getUserData() = viewModelScope.launch {
-        if(sp != null) {
-            if(sp.getBoolean("remember", false)) {
-                val mail = sp.getString("email", "")
-                val password = sp.getString("password", "")
+        if (sp != null) {
+            val mail = sp.getString("email", "")
+            val password = sp.getString("password", "")
 
-                if(!mail.isNullOrEmpty() && !password.isNullOrEmpty()) {
-                    withContext(Dispatchers.IO) {
-                        val user = db.logIn(mail, password)
-                        if (user != null)
-                            _userDataUIState.emit(UserDataUI.Sucess(user))
-                        else
-                            _userDataUIState.emit(UserDataUI.Error)
-                    }
+            if (!mail.isNullOrEmpty() && !password.isNullOrEmpty()) {
+                withContext(Dispatchers.IO) {
+                    val user = db.logIn(mail, password)
+                    if (user != null)
+                        _userDataUIState.emit(UserDataUI.Sucess(user))
+                    else
+                        _userDataUIState.emit(UserDataUI.Error)
                 }
             }
         }
     }
 
     private fun getCampusData() = viewModelScope.launch {
-        when(val response = api.getCampus()) {
+        when (val response = api.getCampus()) {
             is StateResult.Success -> _campusUIState.emit(CampusDataUI.Success(response.data))
             is StateResult.Loading -> _campusUIState.emit(CampusDataUI.Loading(response.loading))
             is StateResult.Error -> _campusUIState.emit(CampusDataUI.Error)
@@ -65,7 +66,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun getEventsData() = viewModelScope.launch {
-        when(val response = api.getEvents()) {
+        when (val response = api.getEvents()) {
             is StateResult.Success -> _eventsUIState.emit(EventsDataUI.Success(response.data))
             is StateResult.Loading -> _eventsUIState.emit(EventsDataUI.Loading(response.loading))
             is StateResult.Error -> _eventsUIState.emit(EventsDataUI.Error)

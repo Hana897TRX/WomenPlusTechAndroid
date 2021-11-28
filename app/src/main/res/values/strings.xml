@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Women+Tech</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_account">Crear una cuenta</string>
     <string name="email">example@womenplustech.mx</string>
@@ -19,6 +18,13 @@
     <string name="user_modified">El usuario se ha intentado modificar, inicie sesión nuevamente</string>
     <string name="guest">Invitada</string>
     <string name="wrong_user_or_password">Usuario o contraseña incorrecto</string>
+
+    <array name="welcome">
+        <item>Bienvenida a</item>
+        <item>Bienvenido a</item>
+        <item>Bienvenide a</item>
+        <item>Bienvenidx a</item>
+    </array>
 
     <array name="gender">
         <item>Femenino</item>

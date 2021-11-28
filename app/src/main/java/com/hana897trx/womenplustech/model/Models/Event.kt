@@ -21,5 +21,5 @@ data class Event(
         var temary : String,
         var eventType : String,
         var fechaInicio : Date,
-        var userId : Long? = null
+        var userMail : String? = null
     )

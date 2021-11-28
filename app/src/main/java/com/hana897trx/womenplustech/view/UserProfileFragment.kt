@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 class UserProfileFragment : Fragment() {
     private lateinit var binding : FragmentUserProfileBinding
     private lateinit var userViewModel : userProfileViewModel
-    //private var sharedPreference = requireContext().getSharedPreferences("remember-user", Context.MODE_PRIVATE)
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
@@ -41,7 +41,7 @@ class UserProfileFragment : Fragment() {
         backToLogin()
 
         userViewModel.getUserData(idUser!!)
-        userViewModel.getEventsUser(idUser)
+        userViewModel.getEventsUser()
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
@@ -62,12 +62,8 @@ class UserProfileFragment : Fragment() {
     }
 
     private fun backToLogin() = binding.apply {
-        /*sharedPreference.edit().apply {
-            putString("password", "_")
-            apply()
-        }*/
-
         btnBackToLogin.setOnClickListener {
+            userViewModel.invalidateUserSesion()
             findNavController().navigate(R.id.action_userProfileFragment_to_login)
         }
     }

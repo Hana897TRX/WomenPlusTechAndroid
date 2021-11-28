@@ -62,10 +62,18 @@ class HomeFragment : Fragment() {
                 when(it) {
                     is UserDataUI.Sucess -> {
                         binding.txtUsername.text = it.data.userName!!.split(" ")[0]
+
+                        if(it.data.gender == resources.getStringArray(R.array.gender)[0])
+                            binding.txtWelcome.text = resources.getStringArray(R.array.welcome)[0]
+                        else if(it.data.gender == resources.getStringArray(R.array.gender)[1])
+                            binding.txtWelcome.text = resources.getStringArray(R.array.welcome)[1]
+                        else if(it.data.gender == resources.getStringArray(R.array.gender)[2])
+                            binding.txtWelcome.text = resources.getStringArray(R.array.welcome)[2]
+                        else if (it.data.gender == resources.getStringArray(R.array.gender)[3])
+                            binding.txtWelcome.text = resources.getStringArray(R.array.welcome)[3]
                     }
                     is UserDataUI.Loading -> { }
                     is UserDataUI.Error -> {
-                        Toast.makeText(requireContext(), R.string.user_modified, Toast.LENGTH_SHORT).show()
                         binding.txtUsername.text = getString(R.string.guest)
                     }
                 }

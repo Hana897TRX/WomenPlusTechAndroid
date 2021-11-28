@@ -1,6 +1,7 @@
 package com.hana897trx.womenplustech.myCourses
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 class MyCoursesViewModel(application: Application) : AndroidViewModel(application) {
     private var apiMessages = APIMessages()
     private var db : AppDB = AppDB.getInstance(application.applicationContext)
+    private var sharedPreference = application.getSharedPreferences("remember-user", Context.MODE_PRIVATE)
     private lateinit var events : List<Event>
 
     private val _myCoursesUIState : MutableStateFlow<EventsDataUI> = MutableStateFlow(EventsDataUI.Loading(true))
@@ -30,7 +32,12 @@ class MyCoursesViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     private fun getEventsDataFromLocal() = viewModelScope.launch(Dispatchers.IO) {
-        events = db.eventDao().getRegisterEvents()
+        val email = sharedPreference.getString("email", "")
+        events = if(email != "")
+            db.eventDao().getRegisterEvents(sharedPreference.getString("email", "")!!)
+        else
+            db.eventDao().getRegisterEvents()
+
         if(events.isNotEmpty()) {
             _myCoursesUIState.emit(EventsDataUI.Success(events))
             getEventsMessagesRemote()

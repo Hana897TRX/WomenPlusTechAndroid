@@ -20,14 +20,15 @@ class MainActivity : AppCompatActivity() {
         navController.graph = navController.navInflater.inflate(R.navigation.principal_navigation)
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onDestroy() {
+        super.onDestroy()
         val sp = application.getSharedPreferences("remember-user", Context.MODE_PRIVATE)
 
         if(sp != null) {
             if(!sp.getBoolean("remember", false)) {
                 sp.edit().apply {
-                    putString("password", "_")
+                    putString("email", "")
+                    putString("password", "")
                     apply()
                 }
             }

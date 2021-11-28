@@ -222,7 +222,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtTemary" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/txtTemaryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -242,7 +242,7 @@
                 android:text="1. Fundamentos: • Corriente • Voltaje • Resistencia • Capacitancia • Inductancia  2. Elementos: • Pasivos • Activos  3. Simbología de elementos  4. Circuito básico con un led  5. Elementos en serie y en paralelo 6. Diversos ejercicio para aprender"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTemaryTitle" />
 
             <TextView
                 android:id="@+id/txtEventType"

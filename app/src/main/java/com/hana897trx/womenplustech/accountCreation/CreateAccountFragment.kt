@@ -90,6 +90,7 @@ class CreateAccountFragment : Fragment() {
                                 userName = fullName,
                                 birthDate = Date(format.parse(birthday).time),
                                 email = mail,
+                                gender = gender,
                                 password = Hex.encodeHex(MessageDigest.getInstance("SHA-256").digest(password.toByteArray()), false),
                                 imgProfile = steam.toByteArray()
                             )
@@ -118,5 +119,4 @@ class CreateAccountFragment : Fragment() {
             }
         }
     }
-
 }

@@ -1,5 +1,7 @@
 package com.hana897trx.womenplustech.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -25,6 +27,7 @@ import java.sql.Date
 
 class EventInfo : AppCompatActivity() {
     private lateinit var binding : ActivityEventInfoBinding
+    private lateinit var sp : SharedPreferences
 
     private var event : Event? = null
 
@@ -32,8 +35,9 @@ class EventInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityEventInfoBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
+
+        sp = getSharedPreferences("remember-user", Context.MODE_PRIVATE)
 
         back()
         setInfoToView()
@@ -56,6 +60,9 @@ class EventInfo : AppCompatActivity() {
         val btnInscri = findViewById<Button>(R.id.btnInscribirse)
 
         btnInscri.setOnClickListener {
+            if(sp.getString("email", "") != "")
+                event!!.userMail = sp.getString("email", "")
+
             val url = intent.getStringExtra("registerLink")!!
             val builder = CustomTabsIntent.Builder()
             val customTabIntent = builder.build()
@@ -95,6 +102,12 @@ class EventInfo : AppCompatActivity() {
         txtCampus.text = event!!.campus
         txtFechaInicio.text = event!!.fechaInicio.toString()
         txtDescription.text = event!!.description
-        txtTemary.text = event!!.temary
+
+        if(event!!.temary == "null") {
+            txtTemary.visibility = View.GONE
+            txtEventTitle.visibility = View.GONE
+        }
+        else
+            txtTemary.text = event!!.temary
     }
 }
