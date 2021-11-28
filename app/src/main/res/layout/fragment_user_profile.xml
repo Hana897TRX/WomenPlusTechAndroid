@@ -182,9 +182,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        app:srcCompat="@drawable/wallpaper"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/btnBackToLogin"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"

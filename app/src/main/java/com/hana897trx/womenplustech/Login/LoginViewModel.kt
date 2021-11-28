@@ -24,11 +24,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         tryLogin()
     }
 
-    suspend fun checkLogin(email : String, password: String, remember : Boolean) = viewModelScope.launch(Dispatchers.IO) {
+    suspend fun checkLogin(email : String, password: String, remember : Boolean, tryLogin : Boolean) = viewModelScope.launch(Dispatchers.IO) {
         _userDataUIState.emit(UserDataUI.Loading(true))
 
         val hashPassword = Hex.encodeHex(MessageDigest.getInstance("SHA-256").digest(password.toByteArray()), false)
-        val response = userDao.logIn(email, hashPassword)
+        val response = userDao.logIn(email, if(tryLogin) password else hashPassword)
 
         if(response != null) {
             sharedPreference.edit().apply {
@@ -43,14 +43,14 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             _userDataUIState.emit(UserDataUI.Error)
     }
 
-    private fun tryLogin() {
+    fun tryLogin() {
         if(sharedPreference != null) {
             val password = sharedPreference.getString("password", "")
             val mail = sharedPreference.getString("email", "")
             val remember = sharedPreference.getBoolean("remember", false)
 
-            if(remember && !password.isNullOrEmpty() && !mail.isNullOrEmpty())
-                viewModelScope.launch { checkLogin(mail, password, remember) }
+            if(!password.isNullOrEmpty() && !mail.isNullOrEmpty())
+                viewModelScope.launch { checkLogin(mail, password, remember, true) }
         }
     }
 

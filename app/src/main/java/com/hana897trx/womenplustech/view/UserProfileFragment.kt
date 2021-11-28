@@ -1,5 +1,6 @@
 package com.hana897trx.womenplustech.view
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hana897trx.womenplustech.R
 import com.hana897trx.womenplustech.databinding.FragmentUserProfileBinding
@@ -23,6 +25,7 @@ import kotlinx.coroutines.launch
 class UserProfileFragment : Fragment() {
     private lateinit var binding : FragmentUserProfileBinding
     private lateinit var userViewModel : userProfileViewModel
+    //private var sharedPreference = requireContext().getSharedPreferences("remember-user", Context.MODE_PRIVATE)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
@@ -34,6 +37,8 @@ class UserProfileFragment : Fragment() {
         userViewModel = ViewModelProvider(this).get(userProfileViewModel::class.java)
 
         val idUser = arguments?.getInt("idUser", 0)
+
+        backToLogin()
 
         userViewModel.getUserData(idUser!!)
         userViewModel.getEventsUser(idUser)
@@ -53,6 +58,17 @@ class UserProfileFragment : Fragment() {
                 is EventsDataUI.Error -> {  }
                 is EventsDataUI.Loading -> {  }
             }
+        }
+    }
+
+    private fun backToLogin() = binding.apply {
+        /*sharedPreference.edit().apply {
+            putString("password", "_")
+            apply()
+        }*/
+
+        btnBackToLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_userProfileFragment_to_login)
         }
     }
 

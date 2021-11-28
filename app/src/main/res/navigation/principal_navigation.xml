@@ -20,7 +20,7 @@
             app:destination="@id/login" />
         <action
             android:id="@+id/action_home_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
+            app:destination="@id/UserProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/myCourses"
@@ -64,7 +64,7 @@
             app:destination="@id/createAccountFragment2" />
         <action
             android:id="@+id/action_login_to_userProfileFragment2"
-            app:destination="@id/userProfileFragment" />
+            app:destination="@id/UserProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/createAccountFragment2"
@@ -85,9 +85,9 @@
             app:destination="@id/myCourses" />
     </fragment>
     <fragment
-        android:id="@+id/userProfileFragment"
+        android:id="@+id/UserProfileFragment"
         android:name="com.hana897trx.womenplustech.view.UserProfileFragment"
-        android:label="userProfileFragment">
+        android:label="UserProfileFragment">
         <action
             android:id="@+id/action_userProfileFragment_to_login"
             app:destination="@id/login" />

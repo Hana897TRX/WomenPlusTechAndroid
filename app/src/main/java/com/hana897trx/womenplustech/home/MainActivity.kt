@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         if(sp != null) {
             if(!sp.getBoolean("remember", false)) {
                 sp.edit().apply {
-                    putString("password", "")
+                    putString("password", "_")
                     apply()
                 }
             }

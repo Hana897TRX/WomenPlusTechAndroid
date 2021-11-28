@@ -25,10 +25,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class Login : Fragment() {
-    private lateinit var binding : FragmentLogInBinding
-    private lateinit var viewModel : LoginViewModel
+    private lateinit var binding: FragmentLogInBinding
+    private lateinit var viewModel: LoginViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentLogInBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -51,21 +55,28 @@ class Login : Fragment() {
         }
     }
 
-    private fun userObservable() = lifecycleScope.launch {
+    private suspend fun userObservable() {
         viewModel.userDataUI.collect {
-            when(it) {
-                is UserDataUI.Sucess -> { goToAccountInfo(it.data) }
-                is UserDataUI.Loading -> {}
-                is UserDataUI.Error -> { Toast.makeText(requireContext(), R.string.wrong_user_or_password, Toast.LENGTH_SHORT).show() }
+            when (it) {
+                is UserDataUI.Sucess -> {
+                    goToAccountInfo(it.data)
+                }
+                is UserDataUI.Loading -> {
+                }
+                is UserDataUI.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.wrong_user_or_password,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
 
-    private fun goToAccountInfo(user : User) {
+    private fun goToAccountInfo(user: User) {
         val bundle = bundleOf("idUser" to user.id)
-        if( findNavController().currentDestination!!.id != R.id.action_login_to_createAccountFragment2 ) {
-            findNavController().navigate(R.id.action_login_to_userProfileFragment2, bundle)
-        }
+        findNavController().navigate(R.id.action_login_to_userProfileFragment2, bundle)
     }
 
     private fun goToAccountCreation() = binding.apply {
@@ -78,8 +89,20 @@ class Login : Fragment() {
         val email = txtLoginEmail.text.toString()
         val password = txtLoginPassword.text.toString()
 
-        if(email.isNotEmpty() && password.isNotEmpty()) {
-            viewLifecycleOwner.lifecycleScope.launch { viewModel.checkLogin(email, password, cbRememberMe.isChecked) }
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.checkLogin(
+                    email,
+                    password,
+                    cbRememberMe.isChecked,
+                    false
+                )
+            }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.tryLogin()
     }
 }

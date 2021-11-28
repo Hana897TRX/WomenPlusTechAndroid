@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -36,13 +37,15 @@ class HomeFragment : Fragment() {
         Fresco.initialize(requireContext());
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        goToAccount()
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
@@ -91,6 +94,12 @@ class HomeFragment : Fragment() {
                     is EventsDataUI.Error -> {}
                 }
             }
+        }
+    }
+
+    private fun goToAccount() = binding.apply {
+        btnAccount.setOnClickListener {
+            findNavController().navigate(R.id.myAccount)
         }
     }
 
