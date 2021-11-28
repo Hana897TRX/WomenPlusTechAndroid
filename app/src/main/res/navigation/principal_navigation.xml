@@ -18,6 +18,9 @@
         <action
             android:id="@+id/myAccount"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_home_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/myCourses"
@@ -59,10 +62,13 @@
         <action
             android:id="@+id/action_login_to_createAccountFragment2"
             app:destination="@id/createAccountFragment2" />
+        <action
+            android:id="@+id/action_login_to_userProfileFragment2"
+            app:destination="@id/userProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/createAccountFragment2"
-        android:name="com.hana897trx.womenplustech.CreateAccountFragment"
+        android:name="com.hana897trx.womenplustech.accountCreation.CreateAccountFragment"
         android:label="fragment_create_account"
         tools:layout="@layout/fragment_create_account" >
         <action
@@ -77,5 +83,25 @@
         <action
             android:id="@+id/action_myCoursesMessagesFragment_to_myCourses"
             app:destination="@id/myCourses" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.hana897trx.womenplustech.view.UserProfileFragment"
+        android:label="userProfileFragment">
+        <action
+            android:id="@+id/action_userProfileFragment_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_home2"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_myCourses2"
+            app:destination="@id/myCourses" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_myCoursesMessagesFragment"
+            app:destination="@id/myCoursesMessagesFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_createAccountFragment2"
+            app:destination="@id/createAccountFragment2" />
     </fragment>
 </navigation>

@@ -16,7 +16,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/txtEventState"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -29,7 +29,7 @@
                 tools:ignore="TextContrastCheck" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/txtEventName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -39,7 +39,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                app:layout_constraintTop_toBottomOf="@+id/txtEventState" />
 
             <TextView
                 android:id="@+id/textView19"
@@ -50,17 +50,17 @@
                 android:text="@string/session"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/txtEventName" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/txtSesions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="1 de 4"
                 app:layout_constraintStart_toEndOf="@+id/textView19"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/txtEventName" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="50dp"
@@ -87,7 +87,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView19"
+                    android:id="@+id/imgEvent"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
                     app:srcCompat="@drawable/electronica_analogica" />
